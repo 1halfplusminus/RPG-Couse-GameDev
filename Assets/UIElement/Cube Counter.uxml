@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Column" style="flex-shrink: 1; flex-direction: column; align-items: flex-start; justify-content: flex-start; flex-grow: 1; width: 282px;">
+        <ui:VisualElement style="width: 100%; justify-content: center; flex-grow: 0; flex-direction: row; height: 242px; align-items: center;">
+            <ui:VisualElement style="flex-direction: column; width: 133px; border-left-color: rgb(46, 51, 154); border-right-color: rgb(46, 51, 154); border-top-color: rgb(46, 51, 154); border-bottom-color: rgb(46, 51, 154); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; align-items: center; justify-content: center; height: auto;">
+                <ui:VisualElement style="height: auto; align-items: center; justify-content: center;">
+                    <ui:Label text="0" display-tooltip-when-elided="true" name="Count" style="font-size: 100%; -unity-font-style: bold; height: auto;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Row" style="flex-shrink: 1; flex-direction: row; align-items: flex-start; justify-content: center; flex-grow: 0; flex-wrap: nowrap; width: 100%; height: auto; margin-top: 28px;">
+            <ui:Button text="Reset" display-tooltip-when-elided="true" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(219, 0, 0); font-size: 25px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; height: 51px; -unity-text-align: lower-center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
