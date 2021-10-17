@@ -11,8 +11,13 @@ public class TerrainConversionSystem : GameObjectConversionSystem
     protected override void OnUpdate()
     {
         Entities.ForEach((Terrain terrain)=>{
+            var terrainCollider = terrain.GetComponent<TerrainCollider>();
             AddHybridComponent(terrain);
+            AddHybridComponent(terrainCollider);
             DeclareAssetDependency(terrain.gameObject,terrain.terrainData);
+            DeclareAssetDependency(terrain.gameObject, terrainCollider );
+            var entity = GetPrimaryEntity(terrain);
+            DstEntityManager.AddComponentObject(entity,terrainCollider  );
         });
     }
 }
