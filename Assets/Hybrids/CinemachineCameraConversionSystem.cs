@@ -7,51 +7,58 @@ using UnityEngine;
 public struct Follow: IComponentData {
     public Entity Entity;
 }
-
+public struct CinemachineBrainTag : IComponentData {
+}
 public struct LookAt : IComponentData {
     public Entity Entity;
 }
 
+public struct ActiveCamera: IComponentData {
+
+}
 public class CinemachineCameraConversionSystem : GameObjectConversionSystem {
     // TODO: Clean up put all follow target in a same parent game object
     protected override void OnUpdate () { 
+        Entities.ForEach((CinemachineBrain brain)=>{
+            var brainEntity = DstEntityManager.CreateEntity();
+            DstEntityManager.AddComponentObject(brainEntity, brain);
+            DstEntityManager.AddComponentData(brainEntity,new CinemachineBrainTag() { });
+        });
         Entities.ForEach((CinemachineVirtualCamera virtualCamera)=> {
-            AddHybridComponent(virtualCamera);
+            
+            var virtualCameraEntity =  DstEntityManager.CreateEntity();
+            DstEntityManager.AddComponentObject(virtualCameraEntity, virtualCamera);
             if(virtualCamera.m_Follow != null) {
                 var followedEntity = TryGetPrimaryEntity(virtualCamera.m_Follow.gameObject);
                 if(followedEntity != Entity.Null) {
-                
-                  /*   DeclareDependency(virtualCamera, virtualCamera.m_Follow);
-                    AddHybridComponent(virtualCamera.m_Follow); */
                     Debug.Log("Follow " + followedEntity.Index);
-                    DstEntityManager.AddComponentData(GetPrimaryEntity(virtualCamera), new Follow() { Entity = followedEntity}); 
+                    DstEntityManager.AddComponentData(virtualCameraEntity, new Follow() { Entity = followedEntity}); 
                 }
+                 AddHybridComponent(virtualCamera.m_Follow);
             }
             if(virtualCamera.m_LookAt != null) {
                 var lookAtEntity = TryGetPrimaryEntity(virtualCamera.m_LookAt.gameObject);
                 if(lookAtEntity != Entity.Null) {
                     Debug.Log("Look At " + lookAtEntity.Index);
-                    DstEntityManager.AddComponentData(GetPrimaryEntity(virtualCamera), new LookAt() { Entity = lookAtEntity}); 
+                    DstEntityManager.AddComponentData(virtualCameraEntity, new LookAt() { Entity = lookAtEntity}); 
                 }
                 AddHybridComponent(virtualCamera.m_LookAt);
             }
-            
+            DstEntityManager.AddComponentData(virtualCameraEntity, new ActiveCamera());
         });
     }
 }
 
 public class CinemachineVirtualCameraHybriSystem : SystemBase
 {
+ 
     protected override void OnUpdate()
-    {
+    {      
         Entities
         .WithoutBurst()
+        .WithChangeFilter<Follow>()
         .ForEach((CinemachineVirtualCamera camera, in Follow target)=>{
             if(EntityManager.HasComponent<LocalToWorld>(target.Entity)) {
-                // TODO: Put Somewhere else
-                camera.enabled = false;
-                camera.enabled = true;
-             
                 var transform = EntityManager.GetComponentObject<Transform>(target.Entity);
                 var targetPosition = EntityManager.GetComponentData<LocalToWorld>(target.Entity);
                 camera.m_Follow = transform;
@@ -59,6 +66,7 @@ public class CinemachineVirtualCameraHybriSystem : SystemBase
         }).Run();
          Entities
         .WithoutBurst()
+        .WithChangeFilter<LookAt>()
         .ForEach((CinemachineVirtualCamera camera, in LookAt target)=>{
             if(EntityManager.HasComponent<LocalToWorld>(target.Entity)) {
                 var transform = EntityManager.GetComponentObject<Transform>(target.Entity);
@@ -66,5 +74,10 @@ public class CinemachineVirtualCameraHybriSystem : SystemBase
                 camera.m_LookAt = transform;
             }
         }).Run();
+        /* Entities
+        .WithoutBurst()
+        .ForEach((CinemachineBrain brain)=>{
+           brain.ManualUpdate();
+        }).Run(); */
     }
 }

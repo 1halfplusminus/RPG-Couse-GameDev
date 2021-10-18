@@ -7,6 +7,9 @@ using Unity.Mathematics;
 using UnityEngine.InputSystem;
 using Unity.Physics;
 using static ExtensionMethods.EcsConversionExtension;
+using Unity.Collections;
+
+[GenerateAuthoringComponent]
 public struct MouseClick: IComponentData {
     public float3 ScreenCordinate;
     public Unity.Physics.Ray Ray;
@@ -16,15 +19,17 @@ public class PlayerMouseInputSystem : JobComponentSystem
 {
     EntityCommandBufferSystem entityCommandBufferSystem;
     GameInput input;
+    
+    MouseClick capturedClick;
+
     protected override void OnCreate() { 
         entityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
         input = new GameInput();
         input.Enable();
         input.Gameplay.Click.performed += (ctx)=>{
-            var mouseClick = EntityManager.CreateEntity(typeof(MouseClick));  
             float2 value = Pointer.current.position.ReadValue();
             var ray = FromEngineRay(Camera.main.ScreenPointToRay(new float3(value,0f)));
-            EntityManager.AddComponentData(mouseClick, new MouseClick{ScreenCordinate = ray.Origin,Ray = ray });        
+            capturedClick = new MouseClick{ScreenCordinate = ray.Origin,Ray = ray };       
         };
     }   
     protected override void OnDestroy() {
@@ -32,10 +37,13 @@ public class PlayerMouseInputSystem : JobComponentSystem
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+        var CapturedClick = capturedClick;
         var commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
         var handles = Entities.ForEach((Entity e,int entityInQueryIndex,in MouseClick m)=>{
-            commandBuffer.RemoveComponent<MouseClick>(entityInQueryIndex,e);
-        }).Schedule(inputDeps);
+            commandBuffer.SetComponent(entityInQueryIndex,e,CapturedClick); 
+        })
+     
+        .Schedule(inputDeps);
         entityCommandBufferSystem.AddJobHandleForProducer(handles);
         return handles;
     }
