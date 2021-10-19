@@ -1,6 +1,6 @@
 
 using UnityEngine.AI;
-
+using Unity.Physics;
 public class NavMeshAgentConversionSystem : GameObjectConversionSystem
 {
     protected override void OnUpdate()
@@ -10,6 +10,8 @@ public class NavMeshAgentConversionSystem : GameObjectConversionSystem
        });
        Entities.ForEach((NavMeshAgent agent)=>{
           AddHybridComponent(agent);
+          var entity = GetPrimaryEntity(agent);
+          DstEntityManager.AddComponent<Mouvement>(entity);
        });
     }
 }

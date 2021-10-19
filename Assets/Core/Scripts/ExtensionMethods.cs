@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Unity.Mathematics;
 namespace ExtensionMethods
 {
     public static class EcsConversionExtension
@@ -11,7 +11,7 @@ namespace ExtensionMethods
         }      
         public static  UnityEngine.Ray ToEngineRay( this  Unity.Physics.Ray physicsRay)
         {
-           return new UnityEngine.Ray {direction = physicsRay.Displacement, origin = physicsRay.Origin};
+           return new UnityEngine.Ray {direction = math.normalize(physicsRay.Displacement), origin = physicsRay.Origin};
         }     
     }
 }

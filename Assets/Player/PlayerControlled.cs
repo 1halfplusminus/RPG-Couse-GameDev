@@ -14,7 +14,7 @@ public class ConvertPlayerControlled : GameObjectConversionSystem
     {
         Entities.WithAll<PlayerControlled>().ForEach((Transform t) =>{
             var entity = GetPrimaryEntity(t);
-            DstEntityManager.AddComponentData(entity, new MouseClick());
+            DstEntityManager.AddComponent<MouseClick>(entity);
         });
     }
 }
