@@ -849,7 +849,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7789034, y: 1}
+    m_SensorSize: {x: 1.7799256, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2365,6 +2365,34 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f8e46407c2730a043ad302e6e132e8c3, type: 2}
+    - target: {fileID: 396562469792052668, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 624953765214336992, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 876414506585019813, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1104416623875542083, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520175386191422147, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432284655854698817, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718389818506582059, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3413094709183804813, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -2389,6 +2417,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: dcefeb2a9d3d8ea41a45c458d6484c5e, type: 2}
+    - target: {fileID: 4497869155055934629, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5125315722088792886, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -2496,6 +2528,14 @@ PrefabInstance:
     - target: {fileID: 7963304374618828084, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102156079702475991, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8109003921579334590, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9131941323925194028, guid: d502d046c0e256d4e8a6ee7d06dbc9e2, type: 3}
       propertyPath: m_Materials.Array.size

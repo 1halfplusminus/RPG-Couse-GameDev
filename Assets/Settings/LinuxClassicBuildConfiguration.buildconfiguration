@@ -10,22 +10,14 @@
         {
             "$type": "Unity.Build.Common.SceneList, Unity.Build",
             "$version": 1,
-            "BuildCurrentScene": true,
-            "SceneInfos": [
-                {
-                    "Scene": "GlobalObjectId_V1-1-58620b0a30e260b43ac1c2cd9e3e8e1b-102900000-0",
-                    "AutoLoad": false
-                }
-            ]
+            "BuildCurrentScene": false,
+            "SceneInfos": []
         },
         {
             "$type": "Unity.Build.Classic.ClassicBuildProfile, Unity.Build.Classic",
             "$version": 1,
-            "Platform": "webgl",
-            "Configuration": 3
-        },
-        {
-            "$type": "Unity.Scenes.Editor.Build.LiveLink, Unity.Scenes.Editor"
+            "Platform": "linux",
+            "Configuration": 2
         }
     ]
 }
