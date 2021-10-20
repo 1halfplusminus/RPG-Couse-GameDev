@@ -29,23 +29,23 @@ public class ClickOnTerrainSystem : SystemBase
         var terrainEntities = queryTerrains.ToEntityArray(Allocator.Temp);
         foreach (var click in clicks)
         {
-            if(click.Ray.Displacement.Equals(float3.zero)) {
-                continue;
-            }
-            for(int i = 0; i < terrains.Length; i++) {
-                RaycastHit hit;
-                terrains[i].Raycast(click.Ray.ToEngineRay(), out hit,MAX_DISTANCE);
-                if(hit.collider) {
-                    var worldClick  = new WorldClick {WorldPosition = hit.point};
-                    if(EntityManager.HasComponent<WorldClick>(terrainEntities[i])) {
-                        EntityManager.SetComponentData(terrainEntities[i],worldClick);
-                    } else {
-                        EntityManager.AddComponentData(terrainEntities[i],worldClick);
+            if(!click.Ray.Displacement.Equals(float3.zero)) {
+                 for(int i = 0; i < terrains.Length; i++) {
+                    RaycastHit hit;
+                    terrains[i].Raycast(click.Ray.ToEngineRay(), out hit,MAX_DISTANCE);
+                    if(hit.collider) {
+                        var worldClick  = new WorldClick {WorldPosition = hit.point};
+                        if(EntityManager.HasComponent<WorldClick>(terrainEntities[i])) {
+                            EntityManager.SetComponentData(terrainEntities[i],worldClick);
+                        } else {
+                            EntityManager.AddComponentData(terrainEntities[i],worldClick);
+                        }
+                
+                        Debug.Log("Clicked on " + hit.collider.name);
                     }
-            
-                    Debug.Log("Clicked on " + hit.collider.name);
                 }
             }
+          
         }
         clicks.Dispose();
         terrainEntities.Dispose();

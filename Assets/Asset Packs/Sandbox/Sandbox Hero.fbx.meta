@@ -21,6 +21,18 @@ ModelImporter:
   - first:
       74: 7584318021219382268
     second: Armature|Band.001Action
+  - first:
+      74: -7551964380084998518
+    second: Armature|Run
+  - first:
+      74: 2126459665172807778
+    second: IDLE
+  - first:
+      74: 2667949614841947897
+    second: Walk
+  - first:
+      74: 6503710843971187167
+    second: Armature|Run (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -49,7 +61,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

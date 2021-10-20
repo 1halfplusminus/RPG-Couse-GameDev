@@ -13,9 +13,11 @@ using Unity.Collections;
 public struct MouseClick: IComponentData {
     public float3 ScreenCordinate;
     public Unity.Physics.Ray Ray;
+
+    public bool CapturedThisFrame;
 }
 
-public class PlayerMouseInputSystem : JobComponentSystem
+public class PlayerMouseInputSystem : SystemBase
 {
     EntityCommandBufferSystem entityCommandBufferSystem;
     GameInput input;
@@ -26,26 +28,28 @@ public class PlayerMouseInputSystem : JobComponentSystem
         entityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
         input = new GameInput();
         input.Enable();
-        input.Gameplay.Click.performed += (ctx)=>{
-            float2 value = Pointer.current.position.ReadValue();
-            var ray = FromEngineRay(Camera.main.ScreenPointToRay(new float3(value,0f)));
-            capturedClick = new MouseClick{ScreenCordinate = ray.Origin,Ray = ray };       
-        };
     }   
     protected override void OnDestroy() {
         input.Disable();
     }
-    protected override JobHandle OnUpdate(JobHandle inputDeps)
+    protected MouseClick ReadClick() {
+         
+            float2 value = Pointer.current.position.ReadValue();
+            var ray = FromEngineRay(Camera.main.ScreenPointToRay(new float3(value,0f)));
+            capturedClick = new MouseClick{ScreenCordinate = ray.Origin,Ray = ray,CapturedThisFrame = true };   
+            return capturedClick;
+    }
+    protected override void OnUpdate()
     {
-        var CapturedClick = capturedClick;
-        var commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
-        var handles = Entities.ForEach((Entity e,int entityInQueryIndex,in MouseClick m)=>{
-            commandBuffer.SetComponent(entityInQueryIndex,e,CapturedClick); 
-        })
-     
-        .Schedule(inputDeps);
-        entityCommandBufferSystem.AddJobHandleForProducer(handles);
-        return handles;
+        if(input.Gameplay.Click.WasPressedThisFrame()) {
+            var CapturedClick = ReadClick();
+            var commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
+            Entities.ForEach((Entity e,int entityInQueryIndex,in MouseClick m)=>{
+                commandBuffer.SetComponent(entityInQueryIndex,e,CapturedClick); 
+            }).Schedule();
+            entityCommandBufferSystem.AddJobHandleForProducer(this.Dependency);
+        }
+
     }
 }
 
