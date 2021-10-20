@@ -41,7 +41,7 @@ public class PlayerMouseInputSystem : SystemBase
     }
     protected override void OnUpdate()
     {
-        if(input.Gameplay.Click.WasPressedThisFrame()) {
+        if(input.Gameplay.Click.IsPressed()) {
             var CapturedClick = ReadClick();
             var commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
             Entities.ForEach((Entity e,int entityInQueryIndex,in MouseClick m)=>{

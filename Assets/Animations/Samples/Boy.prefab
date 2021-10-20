@@ -1192,15 +1192,17 @@ GameObject:
   m_Component:
   - component: {fileID: 4526576263339593953}
   - component: {fileID: 6701900947891952247}
-  - component: {fileID: 6701900947891952248}
   - component: {fileID: 6701900947891952249}
+  - component: {fileID: 1576981724}
+  - component: {fileID: 1576981725}
+  - component: {fileID: 1576981726}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4526576263339593953
 Transform:
   m_ObjectHideFlags: 0
@@ -1322,19 +1324,6 @@ MonoBehaviour:
   ScaleChannels: []
   FloatChannels: []
   IntChannels: []
---- !u!114 &6701900947891952248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3862524478338763355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6157571be56e6a419d47ea8eaaf2cd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Clip: {fileID: 2876981554226286365, guid: f391a167466df464cb3895d2d50a07a0, type: 3}
 --- !u!114 &6701900947891952249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,6 +1337,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
+--- !u!114 &1576981724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3862524478338763355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79eee3faaa0dcdb4bb895a741a586fdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlendTree: {fileID: 20600000, guid: 5f35cac1a7b23f14fa82f2310c22be7e, type: 2}
+--- !u!114 &1576981725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3862524478338763355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9224e5b275cc53744a54d1270f5d2ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &1576981726
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3862524478338763355}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4060593834236965497
 GameObject:
   m_ObjectHideFlags: 0
