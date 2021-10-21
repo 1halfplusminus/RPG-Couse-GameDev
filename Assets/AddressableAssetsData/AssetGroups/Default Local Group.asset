@@ -16,7 +16,127 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 7e9da94ea41bd094a98cf58b725cd374
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: e4e80168469aa4147814dc36dbeedc95
+    m_Address: Sandbox Terrain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: edeabc55efec61f40bb40224d70550ad
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd2240ea82e2c5c468cd573e9bd1ed1a
+    m_Address: Crate
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d687a850460248e4aa38eb728c857795
+    m_Address: House 1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e54ac69f554d0734e9c4eec4aee3de7b
+    m_Address: House 2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9889c606a18374949b9fc899ee3e5728
+    m_Address: Tree 1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: debe30e6757b8844c952def647f16845
+    m_Address: Tree 2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 58620b0a30e260b43ac1c2cd9e3e8e1b
+    m_Address: Main
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 550c08971c063094081a875450450760
+    m_Address: Sandbox
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 71e51cdaed3dcf64d8b9edbfa8239122
+    m_Address: T5M411yf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 061fb975e78f4444fb94e13d83c00c4d
+    m_Address: Sandbox
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8673334a26024bb4588da94e46713fbb
+    m_Address: Sandbox House Texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 045d81993271f7a4691b274c884ee822
+    m_Address: Sandbox Hero
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 639fe529e0db27f41aca6b62dfc8b091
+    m_Address: Cliff Layer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7f6ba9613c2ed5348a4f6435b15047e5
+    m_Address: Dirt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f38b817bd7b0a941b6e135008178e4a
+    m_Address: Grass Layer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 528ac3d6544f67448b60dbdaa7bec7ab
+    m_Address: NavMesh-Sandbox Terrain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad2bf482e610ea04ab2e6e30bc13b053
+    m_Address: NavMesh
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83c7797ced13c2e4bbcc940d025c1205
+    m_Address: Paved Floor Layer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f4fc38e45c3d834489f8baf79eb78656
+    m_Address: Sandbox Lightning
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 514b0ecd8e2c75141b8a72e211304955
+    m_Address: Sandbox Terrain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0ffaa0b7117ba8c47a9d05ae701d4b4d
+    m_Address: Skybox_Mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dcefeb2a9d3d8ea41a45c458d6484c5e
+    m_Address: Outline
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8e46407c2730a043ad302e6e132e8c3
+    m_Address: Sandbox Hero Mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0da2010c6ee288e41abad624b810a608
+    m_Address: WalkIDLE Hero
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 90250ab376c82354f9093ea609f555d7
+    m_Address: Hero IDLE
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a216f208cbe7cbe45a6bfdc9fc2321fe
+    m_Address: Hero RUN
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 27d598172131cb94089bbac2123f46b8
+    m_Address: Hero WALK
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12ccb828343c3405fb94289774b51aad
+    m_Address: FS000_Day_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1331a26d2843a1148a23d5ddc81629dc
+    m_Address: FS000_Day_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cf073ea0831b9e44eb29ad79080c900a, type: 2}
   m_SchemaSet:
