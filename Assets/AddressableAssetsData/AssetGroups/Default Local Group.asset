@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 7e9da94ea41bd094a98cf58b725cd374
   m_SerializeEntries:
-  - m_GUID: e4e80168469aa4147814dc36dbeedc95
-    m_Address: Sandbox Terrain
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: edeabc55efec61f40bb40224d70550ad
     m_Address: Player
     m_ReadOnly: 0
@@ -57,10 +53,6 @@ MonoBehaviour:
     m_Address: T5M411yf
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 061fb975e78f4444fb94e13d83c00c4d
-    m_Address: Sandbox
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 8673334a26024bb4588da94e46713fbb
     m_Address: Sandbox House Texture
     m_ReadOnly: 0
@@ -95,10 +87,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: f4fc38e45c3d834489f8baf79eb78656
     m_Address: Sandbox Lightning
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 514b0ecd8e2c75141b8a72e211304955
-    m_Address: Sandbox Terrain
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 0ffaa0b7117ba8c47a9d05ae701d4b4d

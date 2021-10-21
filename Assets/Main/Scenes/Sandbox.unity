@@ -903,7 +903,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7798944, y: 1}
+    m_SensorSize: {x: 1.7755102, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1904,9 +1904,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2433127104499449587, guid: e4e80168469aa4147814dc36dbeedc95, type: 3}
+      propertyPath: m_MaterialTemplate
+      value: 
+      objectReference: {fileID: 2100000, guid: 492aaaeacc7367540a4ef1308f959e47, type: 2}
     - target: {fileID: 2433127104499449598, guid: e4e80168469aa4147814dc36dbeedc95, type: 3}
       propertyPath: m_Name
       value: Sandbox Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433127104499449598, guid: e4e80168469aa4147814dc36dbeedc95, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e80168469aa4147814dc36dbeedc95, type: 3}
