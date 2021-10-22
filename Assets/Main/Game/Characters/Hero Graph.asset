@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GraphModel:
     id: 0
   m_CompiledGraph:
-    DisplayName: Test
+    DisplayName: Hero_Graph
     Definition:
       Assets:
       - TypeHash: 1999326547798121539
@@ -24,7 +24,7 @@ MonoBehaviour:
         PortID:
           ID: 0
           Index: 65535
-        Asset: {fileID: 7400000, guid: a216f208cbe7cbe45a6bfdc9fc2321fe, type: 2}
+        Asset: {fileID: 7400000, guid: 27d598172131cb94089bbac2123f46b8, type: 2}
       ExposedObjects:
       - NodeID:
           Value: 8

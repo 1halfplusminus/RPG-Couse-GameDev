@@ -1,4 +1,7 @@
 {
+    "csharp.format.enable": true,
+    "editor.formatOnSave": true,
+    "omnisharp.useGlobalMono":"always" ,
     "search.useIgnoreFiles": false,
     "files.exclude":
     {

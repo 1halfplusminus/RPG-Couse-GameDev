@@ -49,7 +49,7 @@ public class SkinnedMeshRendererConvertionSystem : GameObjectConversionSystem
         Entities.ForEach((SkinnedMeshRenderer skinnedMesh) =>
         {
             skinnedMesh.updateWhenOffscreen = true;
-            skinnedMesh.enabled = false;
+            skinnedMesh.enabled = true;
             AddHybridComponent(skinnedMesh);
             var skinnedMeshEntity = GetPrimaryEntity(skinnedMesh);
             var rootBoneEntity = GetPrimaryEntity(skinnedMesh.rootBone);
@@ -61,7 +61,6 @@ public class SkinnedMeshRendererConvertionSystem : GameObjectConversionSystem
                 var boneParentEntity = GetPrimaryEntity(bone.parent);
                 boneBuffer.Add(new SkinnedMeshBone { Entity = boneEntity, Parent = boneParentEntity });
             }
-            /*         var newSkinnedMesh= EntityManager.GetComponentObject<SkinnedMeshRenderer>(skinnedMeshEntity); */
         });
         Entities.ForEach((Animator animator) =>
         {
@@ -157,7 +156,7 @@ public class SkinnedMeshRendererHybridSystem : SystemBase
                 animatedToWorld[i] = new AnimatedLocalToWorld { Value = boneTransform.worldToLocalMatrix };
             } */
             var currentClip = animator.GetCurrentAnimatorClipInfo(0);
-            Unity.Animation.Debug.Log("Playing clip:" + currentClip[0].clip.name);
+            UnityEngine.Debug.Log("Playing clip:" + currentClip[0].clip.name);
             commandBuffer.AddComponent(e, new PlayClip { Clip = clips[0].Clip });
         }).Run();
     }
