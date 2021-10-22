@@ -6,12 +6,6 @@ using UnityEngine;
 #if UNITY_EDITOR
 using Unity.Animation.Hybrid;
 
-
-public class ClipPlayer: MonoBehaviour  {
-    [SerializeField]
-    public AnimationClip Clip;
-}
-
 public class ClipPlayerConversionSystem : GameObjectConversionSystem
 {
     protected override void OnUpdate()
@@ -30,6 +24,11 @@ public class ClipPlayerConversionSystem : GameObjectConversionSystem
 }
 
 #endif
+
+public class ClipPlayer: MonoBehaviour  {
+
+    public AnimationClip Clip;
+}
 
 public struct PlayClip : IAnimationSetup {
     public BlobAssetReference<Clip> Clip;

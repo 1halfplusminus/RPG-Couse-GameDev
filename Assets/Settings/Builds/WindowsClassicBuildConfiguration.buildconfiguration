@@ -15,6 +15,10 @@
                 {
                     "Scene": "GlobalObjectId_V1-1-58620b0a30e260b43ac1c2cd9e3e8e1b-102900000-0",
                     "AutoLoad": true
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-550c08971c063094081a875450450760-102900000-0",
+                    "AutoLoad": true
                 }
             ]
         },
@@ -22,7 +26,27 @@
             "$type": "Unity.Build.Classic.ClassicBuildProfile, Unity.Build.Classic",
             "$version": 1,
             "Platform": "win",
-            "Configuration": 2
+            "Configuration": 1
+        },
+        {
+            "$type": "Unity.Build.Classic.ClassicScriptingSettings, Unity.Build.Classic",
+            "ScriptingBackend": 0,
+            "Il2CppCompilerConfiguration": 1,
+            "UseIncrementalGC": true
+        },
+        {
+            "$type": "Unity.Build.Common.PlayerScriptingDefines, Unity.Build",
+            "Defines": [
+                "ENABLE_HYBRID_RENDERER_V2",
+                "ENABLE_COMPUTE_DEFORMATIONS"
+            ]
+        },
+        {
+            "$type": "Unity.Build.Common.GraphicsSettings, Unity.Build",
+            "ColorSpace": 0
+        },
+        {
+            "$type": "Unity.Scenes.Editor.Build.LiveLink, Unity.Scenes.Editor"
         }
     ]
 }

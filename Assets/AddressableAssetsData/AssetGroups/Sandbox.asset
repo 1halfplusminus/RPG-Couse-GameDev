@@ -20,31 +20,38 @@ MonoBehaviour:
   - m_GUID: e4e80168469aa4147814dc36dbeedc95
     m_Address: Sandbox Terrain
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 061fb975e78f4444fb94e13d83c00c4d
     m_Address: Sandbox
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 4c7dd1d6d850d9144aa9a3d92605c95d
-    m_Address: Assets/Main/Scenes/Main/LightingData.asset
+    m_Address: LightingData
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 412fc20a28fe4b94eb4ca60c6f7042c8
-    m_Address: Assets/Main/Scenes/Main/ReflectionProbe-0.exr
+    m_Address: ReflectionProbe-0
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 7c725a1fb3e7c6a4e8822920fd5b772d
-    m_Address: Assets/Main/Scenes/Main/NavMesh.asset
+    m_Address: NavMesh
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 514b0ecd8e2c75141b8a72e211304955
     m_Address: Sandbox Terrain
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: 492aaaeacc7367540a4ef1308f959e47
-    m_Address: Assets/Main/Scenes/Shareds/Terrain Lit.mat
+    m_Address: Terrain Lit
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cf073ea0831b9e44eb29ad79080c900a, type: 2}
   m_SchemaSet:

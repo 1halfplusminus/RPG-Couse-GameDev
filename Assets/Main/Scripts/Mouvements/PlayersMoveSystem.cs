@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Collections;
-
+public struct PlayerControlled: IComponentData {}
 public class PlayersMoveSystem : SystemBase
 {
     EndSimulationEntityCommandBufferSystem endSimulationEntityCommandBufferSystem;
