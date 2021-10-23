@@ -47,11 +47,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
-  - m_GUID: 58620b0a30e260b43ac1c2cd9e3e8e1b
-    m_Address: Main
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
   - m_GUID: 71e51cdaed3dcf64d8b9edbfa8239122
     m_Address: T5M411yf
     m_ReadOnly: 0
@@ -112,11 +107,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
-  - m_GUID: f8e46407c2730a043ad302e6e132e8c3
-    m_Address: Sandbox Hero Mat
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
   - m_GUID: 0da2010c6ee288e41abad624b810a608
     m_Address: WalkIDLE Hero
     m_ReadOnly: 0
@@ -161,12 +151,12 @@ MonoBehaviour:
     m_Address: Assets/Settings/Renderers/UniversalRP-MediumQuality.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 550c08971c063094081a875450450760
-    m_Address: Assets/Main/Scenes/Sandbox.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: dfeee7a11f0551d439a4106068cd510b
     m_Address: Assets/Main/Game/Characters/Hero Sandbox.controller
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9c44bf72fb42a2f42a81f78dc12fce8b
+    m_Address: Assets/Main/Game/Characters/Boy/Unlit Skinned Shader.shadergraph
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

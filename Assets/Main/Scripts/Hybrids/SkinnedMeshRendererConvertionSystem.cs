@@ -1,7 +1,9 @@
 using UnityEngine;
 using Unity.Entities;
-using Unity.Animation.Hybrid;
 using Unity.Animation;
+using Unity.Transforms;
+using Unity.Mathematics;
+using Unity.Rendering;
 
 public struct SkinnedMeshElement : IBufferElementData
 {
@@ -17,7 +19,7 @@ public struct RootBone : IComponentData
 }
 public struct Bone : IComponentData
 {
-
+    public Entity Parent;
 }
 
 public struct SkinnedMeshBone : IBufferElementData
@@ -27,11 +29,7 @@ public struct SkinnedMeshBone : IBufferElementData
 
 }
 
-public struct AnimatorClip : IBufferElementData
-{
-    public BlobAssetReference<Clip> Clip;
-}
-#if UNITY_EDITOR
+[DisableAutoCreation]
 public class SkinnedMeshRendererConvertionSystem : GameObjectConversionSystem
 {
     protected override void OnUpdate()
@@ -43,20 +41,22 @@ public class SkinnedMeshRendererConvertionSystem : GameObjectConversionSystem
             {
                 AddHybridComponent(transform);
                 var entity = GetPrimaryEntity(transform);
-                DstEntityManager.AddComponent<Bone>(entity);
+                DstEntityManager.AddComponentData<Bone>(entity, new Bone { Parent = GetPrimaryEntity(transform.parent) });
+                DeclareLinkedEntityGroup(transform.gameObject);
             }
         });
         Entities.ForEach((SkinnedMeshRenderer skinnedMesh) =>
         {
-            skinnedMesh.updateWhenOffscreen = true;
-            skinnedMesh.enabled = false;
+
             AddHybridComponent(skinnedMesh);
             var skinnedMeshEntity = GetPrimaryEntity(skinnedMesh);
             var rootBoneEntity = GetPrimaryEntity(skinnedMesh.rootBone);
             DstEntityManager.AddComponentData<RootBone>(skinnedMeshEntity, new RootBone { Entity = rootBoneEntity });
             var boneBuffer = DstEntityManager.AddBuffer<SkinnedMeshBone>(skinnedMeshEntity);
+            DeclareLinkedEntityGroup(skinnedMesh.rootBone.gameObject);
             foreach (var bone in skinnedMesh.bones)
             {
+                DeclareLinkedEntityGroup(bone.gameObject);
                 var boneEntity = GetPrimaryEntity(bone);
                 var boneParentEntity = GetPrimaryEntity(bone.parent);
                 boneBuffer.Add(new SkinnedMeshBone { Entity = boneEntity, Parent = boneParentEntity });
@@ -80,49 +80,51 @@ public class SkinnedMeshRendererConvertionSystem : GameObjectConversionSystem
                 var skinnedMeshEntity = GetPrimaryEntity(skinnedMesh);
                 skinnedMeshsBuffer.Add(new SkinnedMeshElement { Entity = skinnedMeshEntity });
             }
-            var clipsBuffer = DstEntityManager.AddBuffer<AnimatorClip>(animatorEntity);
-            foreach (var clip in animator.runtimeAnimatorController.animationClips)
-            {
-                DeclareAssetDependency(animator.gameObject, clip);
-                var convertedClip = BlobAssetStore.GetClip(clip);
-                clipsBuffer.Add(new AnimatorClip { Clip = convertedClip });
-            }
+
         });
     }
 }
-#endif
+[DisableAutoCreation]
 [UpdateInGroup(typeof(InitializationSystemGroup))]
-public class SkinnedMeshRendererBoneLikeConvertionSystem : ComponentSystem
+public class SkinnedMeshRendererBoneLinkConvertionSystem : ComponentSystem
 {
     protected override void OnUpdate()
     {
         Entities.ForEach((Entity e, SkinnedMeshRenderer skinnedMesh, ref AnimatorComponent animatorComponent, ref RootBone rootBone) =>
         {
-
-            var transform = EntityManager.GetComponentObject<Transform>(rootBone.Entity);
+            skinnedMesh.enabled = false;
+            skinnedMesh.updateWhenOffscreen = true;
+            skinnedMesh.gameObject.hideFlags = HideFlags.None;
+            var rootBoneTransform = EntityManager.GetComponentObject<Transform>(rootBone.Entity);
             var animator = EntityManager.GetComponentObject<Animator>(animatorComponent.Entity);
+            var animatorTransform = EntityManager.GetComponentObject<Transform>(animatorComponent.Entity);
             var bones = EntityManager.GetBuffer<SkinnedMeshBone>(e);
+            animator.enabled = false;
 
-            transform.parent = animator.transform;
-            skinnedMesh.rootBone = transform;
-            skinnedMesh.transform.parent = animator.transform;
+            skinnedMesh.rootBone = rootBoneTransform;
+            skinnedMesh.transform.parent = animatorTransform;
             for (int i = 0; i < bones.Length; i++)
             {
                 var boneTransform = EntityManager.GetComponentObject<Transform>(bones[i].Entity);
-                var boneParent = EntityManager.GetComponentObject<Transform>(bones[i].Parent);
-                boneTransform.parent = boneParent;
+
                 skinnedMesh.bones[i] = boneTransform;
             }
+        /*     rootBoneTransform.parent.parent = animatorTransform; */
+            animator.Rebind();
 
         });
-        Entities.ForEach((Entity entity, ref Bone bone) =>
+        Entities.WithAll<Parent>().ForEach((Entity entity, ref Bone bone, Transform transform) =>
         {
-            /*   EntityManager.AddComponent<CopyTransformFromGameObject>(entity); */
+            var boneParent = EntityManager.GetComponentObject<Transform>(bone.Parent);
+            transform.gameObject.name = transform.gameObject.name.Replace("(Clone)", "");
+      /*       transform.gameObject.hideFlags = HideFlags.None; */
+            transform.parent = boneParent;
+         /*    EntityManager.AddComponent<CopyTransformFromGameObject>(entity); */
         });
     }
 }
 
-
+[DisableAutoCreation]
 public class SkinnedMeshRendererHybridSystem : SystemBase
 {
     EndSimulationEntityCommandBufferSystem endSimulationEntityCommandBufferSystem;
@@ -134,31 +136,39 @@ public class SkinnedMeshRendererHybridSystem : SystemBase
     protected override void OnUpdate()
     {
         var commandBuffer = endSimulationEntityCommandBufferSystem.CreateCommandBuffer();
-        Entities.WithoutBurst().ForEach((Entity e, SkinnedMeshRenderer renderer) =>
+        Entities
+        .WithoutBurst()
+        .ForEach((Entity e, SkinnedMeshRenderer renderer) =>
         {
             /* var mesh = renderer.sharedMesh;
             renderer.BakeMesh(mesh);
-            RenderMeshUtility.AddComponents(e,commandBuffer, new RenderMeshDescription(mesh,renderer.sharedMaterial)); */
+            RenderMeshUtility.AddComponents(e, commandBuffer, new Unity.Rendering.RenderMeshDescription(mesh, renderer.sharedMaterial)); */
         }).Run();
-        var deltaTime = Time.DeltaTime;
+
         Entities
         .WithoutBurst()
         .ForEach(
-        (Entity e, Animator animator, ref DynamicBuffer<AnimatedLocalToWorld> animatedToWorld, in DynamicBuffer<AnimatorClip> clips) =>
+        (Entity e, DeltaTime deltaTime, Animator animator, ref DynamicBuffer<AnimatedLocalToWorld> animatedToWorld, ref DynamicBuffer<AnimatedData> animatedDatas) =>
         {
-            animator.Update(deltaTime);
-            /* var skinnedMeshsEntities = EntityManager.GetBuffer<SkinnedMeshElement>(e);
+            animator.Update(deltaTime.Value);
+
+            var skinnedMeshsEntities = EntityManager.GetBuffer<SkinnedMeshElement>(e);
             var skinnedMeshEntity = skinnedMeshsEntities[0].Entity;
             var bonesEntities = EntityManager.GetBuffer<SkinnedMeshBone>(skinnedMeshEntity);
-            for (int i = 0; i < bonesEntities.Length; i++)
+            /* for (int i = 0; i < bonesEntities.Length; i++)
             {
-                var boneTransform = EntityManager.GetComponentObject<Transform>(bonesEntities[i].Entity);
-                trnasf
-                animatedToWorld[i] = new AnimatedLocalToWorld { Value = boneTransform.worldToLocalMatrix };
+                UnityEngine.Debug.Log("update animated local to wordl");
+                var boneEntity = bonesEntities[i];
+                var boneTransform = EntityManager.GetComponentObject<Transform>(boneEntity.Entity);
+                 commandBuffer.AddComponent<AnimationLocalToWorldOverride>(boneEntity.Entity, new AnimationLocalToWorldOverride());
+                animatedToWorld[i] = new AnimatedLocalToWorld{Value = boneTransform.localToWorldMatrix};
+                commandBuffer.AddComponent<AnimationLocalToWorldOverride>(boneEntity.Entity, new AnimationLocalToWorldOverride());
+                animatedToWorld[i] = new AnimatedLocalToWorld{Value = boneTransform.localToWorldMatrix}; 
+                animatedDatas[i] = new AnimatedData{ Value = 1.0f};
+                animatedToWorld[i] = new AnimatedLocalToWorld{Value = boneTransform.localToWorldMatrix.inverse}; 
             } */
             var currentClip = animator.GetCurrentAnimatorClipInfo(0);
-            Unity.Animation.Debug.Log("Playing clip:" + currentClip[0].clip.name);
-            commandBuffer.AddComponent(e, new PlayClip { Clip = clips[0].Clip });
+            UnityEngine.Debug.Log("Playing clip:" + currentClip[0].clip.name);
         }).Run();
     }
 }

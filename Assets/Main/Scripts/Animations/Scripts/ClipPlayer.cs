@@ -68,7 +68,7 @@ public class PlayClipSystemBase: AnimationSystemBase<PlayClip,PlayClipStateCompo
        set.SendMessage(data.ClipPlayerNode, ClipPlayerNode.SimulationPorts.Configuration,new ClipConfiguration {Mask = ClipConfigurationMask.LoopTime});
        set.SendMessage(data.ClipPlayerNode,ClipPlayerNode.SimulationPorts.Rig, rig);
        set.SendMessage(data.ClipPlayerNode, ClipPlayerNode.SimulationPorts.Clip, setup.Clip);
-
+       
        return data;
     }
 

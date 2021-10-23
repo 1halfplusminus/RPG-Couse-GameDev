@@ -15,6 +15,10 @@
                 {
                     "Scene": "GlobalObjectId_V1-1-58620b0a30e260b43ac1c2cd9e3e8e1b-102900000-0",
                     "AutoLoad": true
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-635119d50f4cccf468a3cf9e93413ae3-102900000-0",
+                    "AutoLoad": true
                 }
             ]
         },
@@ -22,7 +26,7 @@
             "$type": "Unity.Build.Classic.ClassicBuildProfile, Unity.Build.Classic",
             "$version": 1,
             "Platform": "linux",
-            "Configuration": 2
+            "Configuration": 1
         }
     ]
 }

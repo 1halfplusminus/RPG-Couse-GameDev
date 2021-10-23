@@ -2,17 +2,14 @@ using Unity.Entities;
 using Unity.Scenes;
 
 [assembly: RegisterGenericComponentType(typeof(LinkedEntityGroup))]
-
-public class ToggleSubSceneSystem : ComponentSystem {
+[DisableAutoCreation]
+public class ToggleSubSceneSystem : GameObjectConversionSystem {
      protected override void OnUpdate() {
 
-         Entities.ForEach((Entity entity, SubScene scene) => {
-             if (EntityManager.HasComponent<RequestSceneLoaded>(entity)) {
-                 EntityManager.RemoveComponent<RequestSceneLoaded>(entity);
-             } else {
-                 EntityManager.AddComponent<RequestSceneLoaded>(entity);
-             }
+         Entities.WithNone<RequestSceneLoaded>().ForEach((Entity entity, SubScene scene) => {
+            EntityManager.AddComponent<RequestSceneLoaded>(entity);
+   
          });
-
+     
      }
  }

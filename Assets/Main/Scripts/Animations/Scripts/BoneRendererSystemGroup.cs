@@ -1,6 +1,6 @@
 using Unity.Entities;
 using Unity.Animation;
-/* 
+
 [UpdateAfter(typeof(LateAnimationSystemGroup))]
 public class BoneRendererSystemGroup : ComponentSystemGroup {
 
@@ -15,4 +15,4 @@ public class BoneRendererMatrixSystem : ComputeBoneRenderingMatricesBase {
 [UpdateAfter(typeof(BoneRendererMatrixSystem))]
 public class BoneRendererRenderingSystem: RenderBonesBase {
     
-} */
+}
