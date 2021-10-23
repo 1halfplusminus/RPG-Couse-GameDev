@@ -137,11 +137,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
-  - m_GUID: 41439944d30ece34e96484bdb6645b55
-    m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Data/PostProcessData.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
   - m_GUID: b14ed23c0dd38d44e977db9bd85b43ef
     m_Address: Assets/Settings/Renderers/CustomPostProcessData.asset
     m_ReadOnly: 0

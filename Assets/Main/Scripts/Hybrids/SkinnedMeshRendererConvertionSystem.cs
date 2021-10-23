@@ -47,7 +47,6 @@ public class SkinnedMeshRendererConvertionSystem : GameObjectConversionSystem
         });
         Entities.ForEach((SkinnedMeshRenderer skinnedMesh) =>
         {
-
             AddHybridComponent(skinnedMesh);
             var skinnedMeshEntity = GetPrimaryEntity(skinnedMesh);
             var rootBoneEntity = GetPrimaryEntity(skinnedMesh.rootBone);
@@ -61,7 +60,6 @@ public class SkinnedMeshRendererConvertionSystem : GameObjectConversionSystem
                 var boneParentEntity = GetPrimaryEntity(bone.parent);
                 boneBuffer.Add(new SkinnedMeshBone { Entity = boneEntity, Parent = boneParentEntity });
             }
-            /*         var newSkinnedMesh= EntityManager.GetComponentObject<SkinnedMeshRenderer>(skinnedMeshEntity); */
         });
         Entities.ForEach((Animator animator) =>
         {
@@ -109,7 +107,7 @@ public class SkinnedMeshRendererBoneLinkConvertionSystem : ComponentSystem
 
                 skinnedMesh.bones[i] = boneTransform;
             }
-        /*     rootBoneTransform.parent.parent = animatorTransform; */
+            /*     rootBoneTransform.parent.parent = animatorTransform; */
             animator.Rebind();
 
         });
@@ -117,9 +115,9 @@ public class SkinnedMeshRendererBoneLinkConvertionSystem : ComponentSystem
         {
             var boneParent = EntityManager.GetComponentObject<Transform>(bone.Parent);
             transform.gameObject.name = transform.gameObject.name.Replace("(Clone)", "");
-      /*       transform.gameObject.hideFlags = HideFlags.None; */
+            /*       transform.gameObject.hideFlags = HideFlags.None; */
             transform.parent = boneParent;
-         /*    EntityManager.AddComponent<CopyTransformFromGameObject>(entity); */
+            /*    EntityManager.AddComponent<CopyTransformFromGameObject>(entity); */
         });
     }
 }
