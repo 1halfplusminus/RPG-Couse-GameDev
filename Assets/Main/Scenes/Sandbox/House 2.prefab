@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5161613632391250593}
   - component: {fileID: 6017125841936622441}
   - component: {fileID: -5406546135714281846}
+  - component: {fileID: 2723323505982510394}
   m_Layer: 0
   m_Name: House 2
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 061fb975e78f4444fb94e13d83c00c4d, type: 2}
-  - {fileID: 2100000, guid: dcefeb2a9d3d8ea41a45c458d6484c5e, type: 2}
+  - {fileID: 2100000, guid: 8bd74fab44718fa43a1f80cce5e7f77d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
+--- !u!65 &2723323505982510394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037819653496674459}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.547718, y: 4.312678, z: 4.428034}
+  m_Center: {x: 0.00000016479638, y: -0.0000005884266, z: 2.189016}

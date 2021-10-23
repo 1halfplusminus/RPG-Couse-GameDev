@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 7c725a1fb3e7c6a4e8822920fd5b772d, type: 2}
 --- !u!1001 &13486131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,33 +130,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712437554}
     m_Modifications:
-    - target: {fileID: 5642002532755475366, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: dcefeb2a9d3d8ea41a45c458d6484c5e, type: 2}
     - target: {fileID: 6146453725152094835, guid: d687a850460248e4aa38eb728c857795, type: 3}
       propertyPath: m_Name
       value: House 1 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6146453725152094835, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5225002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.7309756
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3725
       objectReference: {fileID: 0}
     - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
       propertyPath: m_LocalPosition.x
@@ -494,24 +474,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3326130495783064943, guid: debe30e6757b8844c952def647f16845, type: 3}
   m_PrefabInstance: {fileID: 494835027}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &415029104 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6146453725152094835, guid: d687a850460248e4aa38eb728c857795, type: 3}
-  m_PrefabInstance: {fileID: 8134969472684756043}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &415029105
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415029104}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.8002896, y: 4.3637743, z: 6.856539}
-  m_Center: {x: 0.00000007645521, y: -0.00000008117114, z: 3.403269}
 --- !u!1001 &494835027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1691,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 6017125841936622441, guid: e54ac69f554d0734e9c4eec4aee3de7b, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: dcefeb2a9d3d8ea41a45c458d6484c5e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8bd74fab44718fa43a1f80cce5e7f77d, type: 2}
     - target: {fileID: 9037819653496674459, guid: e54ac69f554d0734e9c4eec4aee3de7b, type: 3}
       propertyPath: m_Name
       value: House 2
@@ -1835,17 +1797,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712437554}
     m_Modifications:
-    - target: {fileID: 5642002532755475366, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: dcefeb2a9d3d8ea41a45c458d6484c5e, type: 2}
     - target: {fileID: 6146453725152094835, guid: d687a850460248e4aa38eb728c857795, type: 3}
       propertyPath: m_Name
       value: House 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146453725152094835, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6146453725152094835, guid: d687a850460248e4aa38eb728c857795, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1854,10 +1808,6 @@ PrefabInstance:
     - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3161
       objectReference: {fileID: 0}
     - target: {fileID: 6775463009778233545, guid: d687a850460248e4aa38eb728c857795, type: 3}
       propertyPath: m_LocalPosition.x
