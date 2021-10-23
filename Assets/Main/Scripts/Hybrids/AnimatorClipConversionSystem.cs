@@ -1,15 +1,12 @@
 using UnityEngine;
 using Unity.Entities;
-using Unity.Animation.Hybrid;
 using Unity.Animation;
-
-
+#if UNITY_EDITOR
+using Unity.Animation.Hybrid;
 public struct AnimatorClip : IBufferElementData
 {
     public BlobAssetReference<Clip> Clip;
 }
-
-#if UNITY_EDITOR
 [DisableAutoCreation]
 public class AnimatorClipConversionSystem : GameObjectConversionSystem
 {

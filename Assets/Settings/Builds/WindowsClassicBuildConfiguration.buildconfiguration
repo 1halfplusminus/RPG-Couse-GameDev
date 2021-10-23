@@ -38,7 +38,9 @@
             ]
         },
         {
-            "$type": "Unity.Scenes.Editor.Build.LiveLink, Unity.Scenes.Editor"
+            "$type": "Unity.Build.Classic.ClassicCodeStrippingOptions, Unity.Build.Classic",
+            "StripEngineCode": false,
+            "ManagedStrippingLevel": 0
         }
     ]
 }

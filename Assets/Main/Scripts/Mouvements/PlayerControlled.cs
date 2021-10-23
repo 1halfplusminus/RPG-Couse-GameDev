@@ -1,7 +1,7 @@
 using Unity.Entities;
 
 [GenerateAuthoringComponent]
-public struct PlayerControlled: IComponentData {}
+public struct PlayerControlled : IComponentData { }
 
 [UpdateInGroup(typeof(InitializationSystemGroup))]
 [UpdateAfter(typeof(ConvertToEntitySystem))]
@@ -11,7 +11,8 @@ public class PlayerControlledInitialisationSystem : ComponentSystem
     {
         Entities
         .WithAll<PlayerControlled>()
-        .ForEach((Entity e)=> {
+        .ForEach((Entity e) =>
+        {
             EntityManager.AddComponent<MouseClick>(e);
         });
     }

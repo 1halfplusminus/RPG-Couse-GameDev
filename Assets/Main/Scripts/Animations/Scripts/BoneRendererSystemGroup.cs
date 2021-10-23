@@ -2,17 +2,23 @@ using Unity.Entities;
 using Unity.Animation;
 
 [UpdateAfter(typeof(LateAnimationSystemGroup))]
-public class BoneRendererSystemGroup : ComponentSystemGroup {
+[DisableAutoCreation]
+public class BoneRendererSystemGroup : ComponentSystemGroup
+{
 
 }
 
 [UpdateInGroup(typeof(BoneRendererSystemGroup))]
-public class BoneRendererMatrixSystem : ComputeBoneRenderingMatricesBase {
+[DisableAutoCreation]
+public class BoneRendererMatrixSystem : ComputeBoneRenderingMatricesBase
+{
 
 }
 
 [UpdateInGroup(typeof(BoneRendererSystemGroup))]
 [UpdateAfter(typeof(BoneRendererMatrixSystem))]
-public class BoneRendererRenderingSystem: RenderBonesBase {
-    
+[DisableAutoCreation]
+public class BoneRendererRenderingSystem : RenderBonesBase
+{
+
 }
